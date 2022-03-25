@@ -1,0 +1,19 @@
+- input iris
+- fungsi loss (sum of squares) (2)
+- turunan fungsi aktivasi (4)
+- error output, error hidden layer
+- softmax
+- di input ngeproses mini-batch
+- update weight
+- build model (.txt)
+  Parameter yang wajib ada:
+  - struktur jaringan (jumlah layer, jumlah neuron setiap layer, fungsi aktivasi setiap layer)
+  - learning-rate
+  - error threshold
+  - max_iter
+  - batch_size
+- do backpropagation (di model)
+- self.type layer (output, hidden)
+
+nanti bareng bareng:
+- bandingin pake sklearn 
