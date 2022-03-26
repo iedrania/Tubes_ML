@@ -54,7 +54,8 @@ class Perceptron:
 
     def d_softmax(self,arr):
         pass
-        return np.exp(arr)/np.sum(np.exp(arr))
+        pj if j != targetClass
+        -(1-pj) if j == targetClass
         
 
 if __name__ == "__main__":
