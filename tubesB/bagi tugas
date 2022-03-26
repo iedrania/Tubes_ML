@@ -1,5 +1,5 @@
-- input iris
-- membagi input menjadi mini-batch
+v input iris
+v membagi input menjadi mini-batch
 - fungsi loss (sum of squares) (2)
 - turunan fungsi aktivasi (4)
 - error output, error hidden layer (=gradient?)
@@ -12,11 +12,11 @@
   - learning-rate
   - error threshold
   - max_iter
-  - batch_size
+  v batch_size
 
 - do backpropagation (di model?)
 - kondisi berhenti -> error kumulatif/max_iter
-- self.type layer (output, hidden)
+v self.type layer (output, hidden)
 
 nanti bareng bareng:
 - bandingin pake sklearn 

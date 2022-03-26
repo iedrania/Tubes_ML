@@ -1,5 +1,5 @@
 import numpy as np
-from torch import sigmoid
+# from torch import sigmoid
 
 class Perceptron:
 
@@ -54,6 +54,7 @@ class Perceptron:
 
     def d_softmax(self,arr):
         pass
+        return np.exp(arr)/np.sum(np.exp(arr))
         
 
 if __name__ == "__main__":
