@@ -1,10 +1,11 @@
 - input iris
+- membagi input menjadi mini-batch
 - fungsi loss (sum of squares) (2)
 - turunan fungsi aktivasi (4)
-- error output, error hidden layer
+- error output, error hidden layer (=gradient?)
+- update weight jadi gradient*-1*learning rate
 - softmax
-- di input ngeproses mini-batch
-- update weight
+
 - build model (.txt)
   Parameter yang wajib ada:
   - struktur jaringan (jumlah layer, jumlah neuron setiap layer, fungsi aktivasi setiap layer)
@@ -12,7 +13,9 @@
   - error threshold
   - max_iter
   - batch_size
-- do backpropagation (di model)
+
+- do backpropagation (di model?)
+- kondisi berhenti -> error kumulatif/max_iter
 - self.type layer (output, hidden)
 
 nanti bareng bareng:
