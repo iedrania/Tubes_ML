@@ -51,14 +51,24 @@ class Perceptron:
         return sigm * (1 - sigm)
 
     def calculate_gradient_softmax(self, target):
-        return (self.outputs - target) * self.inputs
+        transposed = np.transpose(self.inputs)
+        hasil = (self.outputs - target) * transposed
+        hasil_transposed = np.transpose(hasil)
+        return hasil_transposed
+        # return (self.outputs - target) * self.inputs
 
     def update_weight_output_softmax(self, learning_rate, target):
+        
         gradient = self.calculate_gradient_softmax(target)
-        for i in range(len(error)):
+        print("perhitungan",self.weights[0] - learning_rate * gradient[0])
+        for i in range(len(self.errors)):
             self.errors = np.append(self.errors, self.error_softmax(self.outputs[i])) 
         for i in range(len(self.weights)):
-            self.weights[i] = self.weights[i] - learning_rate * gradient[i]
+            print(len(self.weights)) # 3 karena gradiennya 3*5 jadi mungkin ambil 1 baris lagi?
+            print(self.weights[i])
+            print(learning_rate)
+            print(gradient[i])
+            self.weights[i] = self.weights[i] - (learning_rate * gradient[i])
  
     def update_weight_hidden(self, learning_rate, actifunct, error, weight): # error dari layer di depannya
         # calculate errors and gradients

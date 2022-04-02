@@ -2,6 +2,7 @@ from layer import Layer
 from perceptron import Perceptron
 import numpy as np
 from sklearn.datasets import load_iris
+from sklearn.utils import shuffle
 
 class Model:
     def __init__(self, filename):
@@ -69,21 +70,24 @@ class Model:
     def fit(self,inputarr, target, learningrate,errorthreshold, maxiter):
         loss = 9999999
         for j in range(maxiter):
+            outputs = []
             for i in range (len(inputarr)):
                 output = self.doffnn(inputarr[i])
+                outputs.append(output[0])
                 self.dobackwardpropagation(learningrate, target[i])
-            # loss = self.crossentropy(output) if (self.model[-1].activation_function_type=="softmax") else self.sumsquarederror(output,target)
-            # if loss <= errorthreshold:
-            #     return output, loss  
-            print("ini adalah output ke", j + 1, "=", output)
-        return output
+            loss = self.crossentropy(output) if (self.model[-1].activation_function_type=="softmax") else self.sumsquarederror(output,target)
+            # # print("ini adalah output ke", j + 1, "=", output)
+            print("ini adalah loss ke", j + 1, "=", loss)
+        return outputs
             
 
-    def sumsquarederror(self,output,target): # target = iris_y
+    def sumsquarederror(self,outputs,target): # target = iris_y
         sigma = 0
-        for i in range(len(output)):
-            sigma += target[i] - output[i]
-        return 0.5*sigma^2
+        for i in range(len(outputs)):
+            for j in range(len(outputs)):
+                sigma += target[i][j] - outputs[i][j]
+            break
+        return 0.5*sigma**2
 
     # def crossentropy(self,output):
     #     return -np.log(output)
@@ -96,6 +100,7 @@ class Model:
 if __name__ == "__main__":
     
     iris_X, iris_y = load_iris(return_X_y = True)
+    # iris_X, iris_y = shuffle(iris_X, iris_y, random_state=0)
     # print(iris_X[10], iris_y[10])
     # print(np.append(iris_X, iris_y))
     # # bagi iris_X (dan iris_y) sesuai batch_size
@@ -111,11 +116,12 @@ if __name__ == "__main__":
     
     # bikin mini batch
     model = Model("model.txt")
-
+    
     mini_batch_X = []
     mini_batch_y = []
     batches_X = []
     batches_y = []
+    
     for i in range (len(iris_X)):
         mini_batch_X.append(iris_X[i])
         mini_batch_y.append(iris_y[i])
@@ -124,7 +130,7 @@ if __name__ == "__main__":
             batches_y.append(mini_batch_y)
             mini_batch_X = []
             mini_batch_y = []
-    print(model.fit(batches_X, batches_y, 0.1, 1, 20))
+    model.fit(batches_X, batches_y, 0.1, 1, 20)
 
     # for i in range (len(batches_X)):
     #     print(i)
