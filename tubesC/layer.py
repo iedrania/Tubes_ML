@@ -1,4 +1,3 @@
-from black import err
 import numpy as np
 from perceptron import Perceptron
 

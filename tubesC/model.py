@@ -68,7 +68,7 @@ class Model:
 
     def doffnn(self,inputarr):
         arr = np.transpose(inputarr)
-        arr = arr.astype('float64')
+        arr = arr.astype('longdouble')
         for layer in self.model:
             bias = [1]*len(arr[0])
             arr = np.append([bias],arr,0)
@@ -93,7 +93,7 @@ class Model:
                 self.dobackwardpropagation(learningrate, target[i])
             loss = self.crossentropy(output) if (self.model[-1].activation_function_type=="softmax") else self.sumsquarederror(output,target)
             # # print("ini adalah output ke", j + 1, "=", output)
-            print("ini adalah loss ke", j + 1, "=", loss)
+            # print("ini adalah loss ke", j + 1, "=", loss)
         return outputs
             
 

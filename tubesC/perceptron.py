@@ -1,8 +1,4 @@
-from distutils.log import error
-import errno
-from black import err
 import numpy as np
-# from torch import sigmoid
 
 class Perceptron:
 
