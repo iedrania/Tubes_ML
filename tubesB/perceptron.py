@@ -29,7 +29,7 @@ class Perceptron:
         return 1/(1+np.exp(-arr))
     
     def relu(self, arr):
-        return np.maximum(arr)
+        return np.maximum(arr,0)
 
     def softmax(self, arr):
         return np.exp(arr)/np.sum(np.exp(arr))
@@ -62,6 +62,7 @@ class Perceptron:
  
     def update_weight_hidden(self, learning_rate, actifunct, error, weight): # error dari layer di depannya
         # calculate errors and gradients
+        self.errors = np.array([])
         for i in range(len(error)):
             self.errors = np.append(self.errors, np.multiply(error[i], weight))
         gradient = self.calculate_gradient(actifunct)
@@ -105,16 +106,3 @@ if __name__ == "__main__":
     # a = np.array([])
     # b = np.append(np.array([1,2,3,4]))
     # print(np.append(a,b))
-
-def calculate_back_output(learning_rate, target):
-    arr_error = np.array([])
-    arr_weights = np.array([])
-    for i in range (len(self.array_of_perceptron)):
-        perceptron = self.array_of_perceptron[i]   
-        perceptron.update_weight_output(learning_rate, self.activation_function_type, target)
-        arr_error = np.append(arr_error, perceptron.errors)
-        arr_weights = np.append(arr_weights, perceptron.weights)
-        print(arr_error)
-    arr_error = np.array(arr_error)
-    print(arr_error)
-    return arr_error, arr_weights

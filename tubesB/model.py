@@ -51,9 +51,8 @@ class Model:
         return arr_layer
     
     def doffnn(self,inputarr):
-        arr = inputarr
+        arr = np.transpose(inputarr)
         for layer in self.model:
-            arr = np.transpose(arr)
             bias = [1]*len(arr[0])
             arr = np.append([bias],arr,0)
             arr = layer.calculate_all(np.transpose(arr))
@@ -69,13 +68,14 @@ class Model:
 
     def fit(self,inputarr, target, learningrate,errorthreshold, maxiter):
         loss = 9999999
-        for _ in range(maxiter):
+        for j in range(maxiter):
             for i in range (len(inputarr)):
                 output = self.doffnn(inputarr[i])
+                self.dobackwardpropagation(learningrate, target[i])
             # loss = self.crossentropy(output) if (self.model[-1].activation_function_type=="softmax") else self.sumsquarederror(output,target)
             # if loss <= errorthreshold:
-            #     return output, loss          
-            self.dobackwardpropagation(learningrate, target)
+            #     return output, loss  
+            print("ini adalah output ke", j + 1, "=", output)
         return output
             
 
@@ -124,7 +124,7 @@ if __name__ == "__main__":
             batches_y.append(mini_batch_y)
             mini_batch_X = []
             mini_batch_y = []
-    print(model.fit(batches_X, batches_y, 0.1, 1, 10))
+    print(model.fit(batches_X, batches_y, 0.1, 1, 20))
 
     # for i in range (len(batches_X)):
     #     print(i)

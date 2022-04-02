@@ -19,7 +19,7 @@ class Layer:
         return np.array(output_array)
 
     def calculate_back_hidden(self, learning_rate, arr_error_before, arr_weights_before):
-        arr_error = np.empty((0, len(arr_error_before)), float)
+        arr_error = np.empty((0, len(arr_error_before[0])), float)
         arr_weights = np.empty((0, len(self.array_of_perceptron[0].weights)), float)
         for i in range (len(self.array_of_perceptron)):
             perceptron = self.array_of_perceptron[i]
@@ -42,7 +42,7 @@ class Layer:
                 arr_error = np.append(arr_error, [perceptron.errors], axis = 0)
         else:
             for i in range (len(self.array_of_perceptron)):
-                perceptron = self.array_of_perceptron[i]   
+                perceptron = self.array_of_perceptron[i]
                 arr_weights = np.append(arr_weights, [perceptron.weights], axis = 0)
                 perceptron.update_weight_output(learning_rate, self.activation_function_type, target)
                 arr_error = np.append(arr_error, [perceptron.errors], axis = 0)
