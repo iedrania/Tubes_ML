@@ -1,0 +1,25 @@
+update weight
+= weight - learning rate * gradien
+[w1 - n*sum(gw1), w2 - n*sum(gw2), ...]
+- gradien itu sum dari gradien mini batch?
+
+gradien
+= - error * d_actifunct(output) * x
+
+- error:
+  - output: y - output
+  - hidden: weight * output + weight * output + ...
+- karena batch errornya bakal banyak
+
+- d_actifunct(output) pake if, ngambil output dari self.output
+- karena batch outputnya bakal banyak
+
+- x = output dari perceptron2 layer belakangnya, dijadiin input buat fungsinya?
+- x emang banyak
+
+[etd1, etd2, ...] * [da.td1, da.td1, ...] * [[x1td1, x2td1, ...], [x1td2, x2td2, ...]]
+
+nanti hasilnya gradiennya
+[gw1, gw2, gw3, gw4, gw5] u/ train data 1
+[gw1, gw2, gw3, gw4, gw5] u/ train data 2
+...

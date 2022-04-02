@@ -1,12 +1,18 @@
 v input iris
 v membagi input menjadi mini-batch
-- fungsi loss (sum of squares) (2)
-- turunan fungsi aktivasi (4)
-- error output, error hidden layer (=gradient?)
-- update weight jadi gradient*-1*learning rate
-- softmax
+x fungsi loss
+  v sumsquarederror
+  - crossentropy
+x turunan fungsi aktivasi
+  v linear, relu, sigmoid
+  - softmax
+- gradien softmax
 
-- build model (.txt)
+
+- update weight hidden -> rania
+- update weight output -> karina
+- calculate gradient -> delisha
+- build model (.txt) -> kak zaidan
   Parameter yang wajib ada:
   - struktur jaringan (jumlah layer, jumlah neuron setiap layer, fungsi aktivasi setiap layer)
   - learning-rate
@@ -14,8 +20,12 @@ v membagi input menjadi mini-batch
   - max_iter
   v batch_size
 
-- do backpropagation (di model?)
-- kondisi berhenti -> error kumulatif/max_iter
+- do backpropagation (di model?), kondisi berhenti -> error kumulatif/max_iter
+
+
+
+
+gradient = -1 + act()
 v self.type layer (output, hidden)
 
 nanti bareng bareng:

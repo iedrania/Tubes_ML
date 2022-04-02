@@ -1,0 +1,13 @@
+5 batch size
+3 jumlah layer
+2 jumlah input
+2 banyak perceptron di layer 1
+sigmoid
+-10 20 20
+30 -20 -20
+1 banyak perceptron di layer 1
+sigmoid
+-30 20 20
+learning-rate
+error threshold
+max_iter
